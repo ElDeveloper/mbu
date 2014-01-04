@@ -146,8 +146,8 @@ void CreateMOVFileFromFilenames(NSArray *filenames, NSArray *durations,
 		[movieBuilder addImage:image
 				   forDuration:frameDuration
 				withAttributes:attributes];
-		[movieBuilder updateMovieFile];
 	}
+	[movieBuilder updateMovieFile];
 #pragma clang diagnostic pop
 }
 
