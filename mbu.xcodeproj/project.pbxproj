@@ -10,6 +10,8 @@
 		506A734F1877726D005D4250 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A734E1877726D005D4250 /* Foundation.framework */; };
 		506A73521877726D005D4250 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A73511877726D005D4250 /* main.m */; };
 		506A73561877726D005D4250 /* MovieBuilder.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 506A73551877726D005D4250 /* MovieBuilder.1 */; };
+		506A735D1877739C005D4250 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A735C1877739C005D4250 /* QTKit.framework */; };
+		506A735F1877805B005D4250 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A735E1877805B005D4250 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,11 +28,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		506A734B1877726D005D4250 /* MovieBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MovieBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A734B1877726D005D4250 /* mbu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mbu; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A734E1877726D005D4250 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		506A73511877726D005D4250 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		506A73541877726D005D4250 /* MovieBuilder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieBuilder-Prefix.pch"; sourceTree = "<group>"; };
+		506A73541877726D005D4250 /* mbu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mbu-Prefix.pch"; sourceTree = "<group>"; };
 		506A73551877726D005D4250 /* MovieBuilder.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MovieBuilder.1; sourceTree = "<group>"; };
+		506A735C1877739C005D4250 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
+		506A735E1877805B005D4250 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506A735F1877805B005D4250 /* AppKit.framework in Frameworks */,
+				506A735D1877739C005D4250 /* QTKit.framework in Frameworks */,
 				506A734F1877726D005D4250 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +63,7 @@
 		506A734C1877726D005D4250 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				506A734B1877726D005D4250 /* MovieBuilder */,
+				506A734B1877726D005D4250 /* mbu */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +71,8 @@
 		506A734D1877726D005D4250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				506A735E1877805B005D4250 /* AppKit.framework */,
+				506A735C1877739C005D4250 /* QTKit.framework */,
 				506A734E1877726D005D4250 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -83,7 +91,7 @@
 		506A73531877726D005D4250 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				506A73541877726D005D4250 /* MovieBuilder-Prefix.pch */,
+				506A73541877726D005D4250 /* mbu-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -91,9 +99,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		506A734A1877726D005D4250 /* MovieBuilder */ = {
+		506A734A1877726D005D4250 /* mbu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 506A73591877726D005D4250 /* Build configuration list for PBXNativeTarget "MovieBuilder" */;
+			buildConfigurationList = 506A73591877726D005D4250 /* Build configuration list for PBXNativeTarget "mbu" */;
 			buildPhases = (
 				506A73471877726D005D4250 /* Sources */,
 				506A73481877726D005D4250 /* Frameworks */,
@@ -103,9 +111,9 @@
 			);
 			dependencies = (
 			);
-			name = MovieBuilder;
+			name = mbu;
 			productName = MovieBuilder;
-			productReference = 506A734B1877726D005D4250 /* MovieBuilder */;
+			productReference = 506A734B1877726D005D4250 /* mbu */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -117,7 +125,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Knight Laboratory";
 			};
-			buildConfigurationList = 506A73461877726D005D4250 /* Build configuration list for PBXProject "MovieBuilder" */;
+			buildConfigurationList = 506A73461877726D005D4250 /* Build configuration list for PBXProject "mbu" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -129,7 +137,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				506A734A1877726D005D4250 /* MovieBuilder */,
+				506A734A1877726D005D4250 /* mbu */,
 			);
 		};
 /* End PBXProject section */
@@ -218,8 +226,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MovieBuilder/MovieBuilder-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "MovieBuilder/mbu-Prefix.pch";
+				PRODUCT_NAME = mbu;
 			};
 			name = Debug;
 		};
@@ -227,15 +235,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MovieBuilder/MovieBuilder-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "MovieBuilder/mbu-Prefix.pch";
+				PRODUCT_NAME = mbu;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		506A73461877726D005D4250 /* Build configuration list for PBXProject "MovieBuilder" */ = {
+		506A73461877726D005D4250 /* Build configuration list for PBXProject "mbu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				506A73571877726D005D4250 /* Debug */,
@@ -244,7 +252,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		506A73591877726D005D4250 /* Build configuration list for PBXNativeTarget "MovieBuilder" */ = {
+		506A73591877726D005D4250 /* Build configuration list for PBXNativeTarget "mbu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				506A735A1877726D005D4250 /* Debug */,
