@@ -43,9 +43,12 @@ int main(int argc, const char * argv[])
 			exit(0);
 		}
 
+		// set default filename to out.mov
 		if (outputFilepath == nil) {
 			outputFilepath = @"out.mov";
 		}
+
+		// do not execute a thing if the file input is not passed in
 		if (filepathForListOfFilenames == nil) {
 			NSLog(@"The -i (--input) argument is required, pass in a list of "
 				  "filepaths");
@@ -68,12 +71,14 @@ int main(int argc, const char * argv[])
 		[arrayOfLines removeObjectAtIndex:[arrayOfLines count]-1];
 		NSMutableArray *arrayOfDurations = nil, *arrayOfFilenames = nil;
 
+		// check if there are durations in the contents of the file
 		if ([[[arrayOfLines objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] count] > 1) {
 			arrayOfFilenames = [[NSMutableArray alloc] init];
 			arrayOfDurations = [[NSMutableArray alloc] init];
 
 			NSArray *buffer = nil;
 
+			// retrieve the durations and save them in the arrays
 			for (NSString *string in arrayOfLines) {
 				buffer = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
@@ -89,6 +94,7 @@ int main(int argc, const char * argv[])
 				}
 			}
 		}
+		// if there is not a duration in the file then just set this to 30
 		else{
 			arrayOfFilenames = [[NSMutableArray alloc] initWithArray:arrayOfLines];
 			arrayOfDurations = [[NSMutableArray alloc] init];
@@ -99,6 +105,7 @@ int main(int argc, const char * argv[])
 		}
 		NSLog(@"%ld frames were loaded", [arrayOfFilenames count]);
 
+		// create the movie
 		CreateMOVFileFromFilenames((NSArray *)arrayOfFilenames,
 								   (NSArray *)arrayOfDurations, outputFilepath);
 
