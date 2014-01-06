@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
 		outputFilepath = [args stringForKey:@"o"] ? [args stringForKey:@"o"] : [args stringForKey:@"-output"];
 
 		// ghetto way to check if help is on or not
-		if ( [[[NSProcessInfo processInfo] arguments] containsObject:@"-h"] ||
+		if ([[[NSProcessInfo processInfo] arguments] containsObject:@"-h"] ||
 			[[[NSProcessInfo processInfo] arguments] containsObject:@"--help"]){
 			fprintf(stdout, "mbu: movie builder\n");
 			fprintf(stdout, "-i (--input) - input filepath to list of frames "\
@@ -50,8 +50,8 @@ int main(int argc, const char * argv[])
 
 		// do not execute a thing if the file input is not passed in
 		if (filepathForListOfFilenames == nil) {
-			NSLog(@"The -i (--input) argument is required, pass in a list of "
-				  "filepaths");
+			fprintf(stdout, "The -i (--input) argument is required, pass in a "
+					"list of filepaths\n");
 			exit(11);
 		}
 
@@ -61,8 +61,9 @@ int main(int argc, const char * argv[])
 														  error:&error];
 
 		if (error) {
-			NSLog(@"Error reading contents of file: %@",
-				  [error localizedDescription]);
+			fprintf(stdout, "Error reading contents of file: %s\n",
+					[[error localizedDescription] UTF8String]);
+			exit(12);
 		}
 
 		// separate on new lines
@@ -88,8 +89,8 @@ int main(int argc, const char * argv[])
 				// worthwile checking that all filepaths exist
 				if (![[NSFileManager defaultManager]
 					  fileExistsAtPath:[buffer objectAtIndex:0]]) {
-					NSLog(@"Error, file %@ does not exist!",
-						  [buffer objectAtIndex:0]);
+					fprintf(stdout, "Error, file %s does not exist!\n",
+						  [[buffer objectAtIndex:0] UTF8String]);
 					exit(12);
 				}
 			}
@@ -103,7 +104,7 @@ int main(int argc, const char * argv[])
 				[arrayOfDurations addObject:@"30"];
 			}
 		}
-		NSLog(@"%ld frames were loaded", [arrayOfFilenames count]);
+		fprintf(stdout, "%ld frames were loaded\n", [arrayOfFilenames count]);
 
 		// create the movie
 		CreateMOVFileFromFilenames((NSArray *)arrayOfFilenames,
@@ -116,6 +117,8 @@ int main(int argc, const char * argv[])
 void CreateMOVFileFromFilenames(NSArray *filenames, NSArray *durations,
 								NSString *outputFilename)
 {
+// for some reason Apple has deprecated most of what's in the QTKit as of 10.9
+// this nifty trick was taken from http://stackoverflow.com/a/14065939/379593
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
@@ -123,16 +126,16 @@ void CreateMOVFileFromFilenames(NSArray *filenames, NSArray *durations,
 	NSImage *image = nil;
 	QTTime frameDuration;
 
-	NSNumber *someNumber = [NSNumber numberWithLong:codecHighQuality];
+	NSNumber *codecQuality = [NSNumber numberWithLong:codecHighQuality];
 	NSDictionary *attributes = @{QTAddImageCodecType: @"avc1",
-								 QTAddImageCodecQuality: someNumber};
+								 QTAddImageCodecQuality: codecQuality};
 
 	QTMovie *movieBuilder = [[QTMovie alloc] initToWritableFile:outputFilename
 														  error:&error];
 
 	if (error) {
-		NSLog(@"Error ocurred when creating QTMovie: %@",
-			   [error localizedDescription]);
+		fprintf(stdout, "Error ocurred when creating QTMovie: %s",
+			   [[error localizedDescription] UTF8String]);
 		return;
 	}
 
