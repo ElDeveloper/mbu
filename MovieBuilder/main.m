@@ -134,7 +134,7 @@ void CreateMOVFileFromFilenames(NSArray *filenames, NSArray *durations,
 														  error:&error];
 
 	if (error) {
-		fprintf(stdout, "Error ocurred when creating QTMovie: %s",
+		fprintf(stdout, "Error ocurred when creating QTMovie: %s\n",
 			   [[error localizedDescription] UTF8String]);
 		return;
 	}
