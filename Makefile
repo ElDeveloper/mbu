@@ -6,7 +6,7 @@
 EX=mbu
 CC=cc
 FRAMEWORKS = -framework Foundation -framework QTKit -framework AppKit
-CFLAGS = -fobjc-arc $(FRAMEWORKS)
+CFLAGS += -fobjc-arc $(FRAMEWORKS)
 #  Main target
 all: $(EX)
 
